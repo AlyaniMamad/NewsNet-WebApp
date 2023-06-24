@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -5,11 +8,24 @@ const FetchNews = () => {
   const [news, setNews] = useState([]);
   const [isImageVisible, setIsImageVisible] = useState(true);
 
-  const FetchNews = () => {
+  const fetchNews = () => {
+    const FetchNews = () => {
+
     axios
       .get(
         "https://newsapi.org/v2/top-headlines?country=in&apiKey=027555d3f174469da4f934679ab9787c"
       )
+
+      .then((response) => {
+        setNews(response.data.articles);
+        setIsImageVisible(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching news:", error);
+      });
+  };
+
+
       .then((response) => setNews(response.data.articles));
       setIsImageVisible(false);
 
@@ -18,13 +34,18 @@ const FetchNews = () => {
   };
 
 
+
   return (
     <>
       <div>
         <div className="container my-3">
           <div className="row">
             <div className="col-4">
+
+              {/* <button className="btn btn-primary" onClick={fetchNews}>
+
               {/* <button className="btn btn-primary" onClick={FetchNews}>
+
                 Fetch News
               </button> */}
             </div>
@@ -36,9 +57,15 @@ const FetchNews = () => {
               {isImageVisible && (
                 <img
                   src="newsfinal.jpg"
+
+                  alt="First Page"
+                  className="img-fluid"
+                  onClick={fetchNews}
+
                   alt="First Page Image"
                   className="img-fluid"
                   onClick={FetchNews}
+
                 />
               )}
             </div>
@@ -50,11 +77,15 @@ const FetchNews = () => {
           {news.map((value) => (
             <div className="col-4" key={value.title}>
               <div className="card" style={{ width: "18rem" }}>
+
+                <img src={value.urlToImage} className="card-img-top" alt="" />
+
                 <img
                   src={value.urlToImage}
                   className="card-img-top"
                   alt="..."
                 />
+
                 <div className="card-body">
                   <h5 className="card-title">{value.title}</h5>
                   <p className="card-text">{value.description}</p>
