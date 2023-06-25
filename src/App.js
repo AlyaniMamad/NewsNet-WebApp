@@ -1,3 +1,6 @@
+
+import './App.css';
+
 import FetchNews from './Components/FetchNews';
 
 function App() {
