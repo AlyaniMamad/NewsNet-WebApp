@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 4ec76df3ab72fdf59dc65c520c4f2e7c51db157f
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -27,8 +22,7 @@ const FetchNews = () => {
         console.error("Error fetching news:", error);
       });
   };
-
-
+    
       .then((response) => setNews(response.data.articles));
       setIsImageVisible(false);
 
@@ -36,16 +30,13 @@ const FetchNews = () => {
 
   };
 
-
-
   return (
     <>
       <div>
         <div className="container my-3">
           <div className="row">
             <div className="col-4">
-<<<<<<< HEAD
-=======
+
 
               {/* <button className="btn btn-primary" onClick={fetchNews}>
 
@@ -53,7 +44,7 @@ const FetchNews = () => {
 
                 Fetch News
               </button> */}
->>>>>>> 4ec76df3ab72fdf59dc65c520c4f2e7c51db157f
+
             </div>
           </div>
         </div>
